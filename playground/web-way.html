@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue 핵심인 Re activity - 반응성 기초가 되는 script</title>
+    <div id="app"></div>
+</head>
+<body>
+    <script>
+        var div = document.querySelector('#app');
+        var vieModel = {};
+
+        (function(){
+            function init(){
+                Object.defineProperty(vieModel, 'str', {
+                    get(){
+                        console.log('접근');
+                    },
+                    set(newValue){
+                        console.log('할당');
+                        render(newValue);
+                    }
+                })
+            }
+            function render(value){
+                div.innerHTML = value;
+            }
+            init();
+        })();
+    </script>
+</body>
+</html>
